@@ -51,6 +51,7 @@ class Bank:
         if os.path.exists(self.filename):
             with open(self.filename, mode='r', newline='') as file:
                 reader = csv.reader(file, delimiter=';')
+                next(reader)  
                 for row in reader:
                     if len(row) == 6:
                         account_id, first_name, last_name, password, balance_checking, balance_savings = row
@@ -59,6 +60,7 @@ class Bank:
                         customer.balance_savings = float(balance_savings) if balance_savings else None
                         customers.append(customer)
         return customers
+
 
     def save_to_csv(self):
         with open(self.filename, mode='w', newline='') as file:
