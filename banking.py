@@ -63,6 +63,7 @@ class Bank:
     def save_to_csv(self):
         with open(self.filename, mode='w', newline='') as file:
             writer = csv.writer(file, delimiter=';')
+            writer.writerow(["Account ID", "First Name", "Last Name", "Password", "Checking Balance", "Savings Balance"])
             for customer in self.customers:
                 writer.writerow([
                     customer.account_id,
